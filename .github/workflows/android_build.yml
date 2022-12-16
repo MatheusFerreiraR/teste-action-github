@@ -14,16 +14,14 @@ jobs:
         with:
           java-version: 11
 
-      - name: Set cache
-      - uses: actions/cache@v2
-          with:
-            path: ~/.gradle/caches
-            key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-            restore-keys: |
-              ${{ runner.os }}-gradle-
+      - name: Build Project
+          run: ./gradlew assemble
 
-      - name: Build QA Flavour APK
-        run: ./gradlew assembleQaDebug
+      - name: Upload APK
+          uses: actions/upload-artifact@v1
+          with:
+            name: app-debug.apk
+            path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload QA Flavour APK to Firebase App Tester
         uses: wzieba/Firebase-Distribution-Github-Action@v1
