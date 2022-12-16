@@ -14,6 +14,10 @@ jobs:
         with:
           node-version: 16.4
 
+      - run: node --version
+      - run: npm install
+      - run: node --version
+
       - name: Set Up JDK
         uses: actions/setup-java@v1
         with:
