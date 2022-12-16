@@ -9,6 +9,12 @@ jobs:
     steps:
       - uses: action/checkout@v1
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          - run: npm ci
+          - run: npm test
+
       - name: Set Up JDK
         uses: actions/setup-java@v1
         with:
