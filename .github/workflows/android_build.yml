@@ -20,8 +20,6 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Build Project
-        run: ./gradlew assemble
 
       - name: Upload APK
         uses: actions/upload-artifact@v1
@@ -36,4 +34,4 @@ jobs:
           serviceCredentialsFileContent: ${{ secrets.TESTE_ACTION_GITHUB }}
           groups: group-test
           releaseNotes: ${{ github.event.head_commit.message }}
-          file: app/build/outputs/apk/qa/debug/app-debug.apk
+          file: app/build/outputs/apk/debug/app-debug.apk
