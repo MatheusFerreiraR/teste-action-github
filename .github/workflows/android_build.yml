@@ -18,4 +18,5 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
+          releaseNotes: ${{ github.event.head_commit.message }}
           file: app/build/outputs/apk/debug/app-debug.apk
