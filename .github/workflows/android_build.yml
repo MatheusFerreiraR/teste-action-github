@@ -25,7 +25,7 @@ jobs:
 
       - name: Logging
         run: |
-          echo "${{toJSON(github.event.pull_request.head_commit)}}"
+          echo "${{toJSON(github.event.pull_request.commits[0])}}"
 
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
