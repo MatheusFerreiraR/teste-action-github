@@ -29,6 +29,10 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
+      - name: Logging
+          run: |
+            echo "${{toJSON(github.event.pull_request._links.commits)}}"
+
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
