@@ -2,7 +2,7 @@ name: Android Build
 
 on:
   pull_request:
-    branches: teste-action-github
+    branches: main
 
 jobs:
   build:
