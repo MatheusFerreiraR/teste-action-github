@@ -6,6 +6,9 @@ on:
 
 jobs:
   build:
+    env:
+      commitmsg: ${{ github.event.head_commit.message }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -23,15 +26,11 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Logging
-        run: |
-          echo "${{toJSON(github.event.push.commits[0])}}"
-
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: testers
-          releaseNotes: ${{ github.pull_request.head_commit.message }}
+          releaseNotes: ${{ env.commitmsg }}
           file: app/build/outputs/apk/debug/app-debug.apk
