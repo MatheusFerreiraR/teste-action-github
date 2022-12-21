@@ -8,7 +8,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Get app version
         id: get_version
         uses: eriknyk/android-get-app-version-action@v1.0.1
