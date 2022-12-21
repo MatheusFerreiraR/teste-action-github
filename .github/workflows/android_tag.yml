@@ -8,9 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get app version
-        id: get_version
-        uses: eriknyk/android-get-app-version-action@v1.0.1
+        -
+      - name: Get Android version
+        id: tag_version
+        uses: ltDino/android-get-version-action@v1.0
+        with:
+          gradlePath: app/build.gradle # or app/build.gradle.kts
 
       - name: Bump version and push tag
         id: tag_version
