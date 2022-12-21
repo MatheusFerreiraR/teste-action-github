@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        -
+
       - name: Get Android version
         id: tag_version
         uses: ltDino/android-get-version-action@v1.0
